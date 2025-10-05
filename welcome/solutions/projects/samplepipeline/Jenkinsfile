@@ -140,7 +140,7 @@ pipeline {
           tasks=$(pgrep -f "flask run" || true)
           [ -n "$tasks" ] && kill -9 $tasks || true
         '''
-        archiveArtifacts artifacts: 'flask_app.log', onlyIfSuccessful: false
+        archiveArtifacts artifacts: 'flask_app.log', onlyIfSuccessful: false, allowEmptyArchive: true
         sh 'rm -rf "$PYENV_HOME" || true'
       }
       // אם מותקן לך Workspace Cleanup אפשר גם:
